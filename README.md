@@ -11,7 +11,7 @@ CastCompanionLibrary-android is a library project to enable developers integrate
 * Set up the project dependencies
 
 ## Documentation
-See the "Cast Companion Libray.pdf" inside the project for a more extensive documentation. 
+See the "CastCompanionLibray.pdf" inside the project for a more extensive documentation. 
 
 ## References and How to report bugs
 * [Cast Developer Documentation](http://developers.google.com/cast/)
