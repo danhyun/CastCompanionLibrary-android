@@ -529,6 +529,7 @@ public class DataCastManager extends BaseCastManager
      */
     public synchronized void addDataCastConsumer(IDataCastConsumer listener) {
         if (null != listener) {
+            super.addBaseCastConsumer(listener);
             boolean result = mDataConsumers.add(listener);
             if (result) {
                 LOGD(TAG, "Successfully added the new DataCastConsumer listener " + listener);
