@@ -104,7 +104,6 @@ public class VideoCastControllerActivity extends ActionBarActivity {
         }
         mShouldStartPlayback = extras.getBoolean("shouldStart");
         mCastConsumer = new MyCastConsumer();
-        mCastManager.addVideoCastConsumer(mCastConsumer);
 
         mSelectedMedia = Utils.toMediaInfo(mediaWrapper);
 
@@ -462,10 +461,6 @@ public class VideoCastControllerActivity extends ActionBarActivity {
 
     @Override
     protected void onDestroy() {
-        LOGD(TAG, "onDestroy() is called");
-        if (null != mCastManager) {
-            mCastManager.removeVideoCastConsumer(mCastConsumer);
-        }
         stopTrickplayTimer();
         super.onDestroy();
     }
@@ -484,12 +479,14 @@ public class VideoCastControllerActivity extends ActionBarActivity {
         } catch (CastException e) {
             // logged already
         }
+        mCastManager.addVideoCastConsumer(mCastConsumer);
         mCastManager.incrementUiCounter();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
+        mCastManager.removeVideoCastConsumer(mCastConsumer);
         mCastManager.decrementUiCounter();
         super.onPause();
     }
